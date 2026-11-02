@@ -123,7 +123,7 @@ def test_2_view_order_details():
     # verify the order id matches the one from before
     order_id_info = order_details_c1_rows[0].split(':')
     order_id_value = order_id_info[-1].strip()
-    # assert order_info_dict.get("Order ID") == order_id_value, "Order ID does not match"
+    assert order_info_dict.get("Order ID") == order_id_value, "Order ID does not match"
     assert order_info_dict.get("Order ID") in order_id_value, "Order ID does not match"
 
     # verify the date added matches the one from before
@@ -329,7 +329,7 @@ def test_3_reorder():
     item = cart_item_rows[0]
     item_sections = item.find_elements(by=By.TAG_NAME, value="td")
     item_name = item_sections[1].text.replace('\n', '').strip()
-    # assert item_name == product_info_dict.get("Product Name"), "first item in cart does not match product reordered"
+    assert item_name == product_info_dict.get("Product Name"), "first item in cart does not match product reordered"
     assert "Canon EOS 5D" in item_name and "Blue" in item_name, "first item in cart does not match product reordered"
     
     # verify that the cart dropdown menu displays the correct amount of the product
